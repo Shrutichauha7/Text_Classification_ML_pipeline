@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 
 cred.txt
+notebooks/data.csv
+local_s3
 
 
 # C extensions
