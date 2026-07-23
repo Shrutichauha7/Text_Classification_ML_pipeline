@@ -4,11 +4,7 @@ __pycache__/
 *$py.class
 
 
-models/
-data/
-cred.txt
-notebooks/
-local_s3
+
 
 
 # C extensions
@@ -216,6 +212,11 @@ tempCodeRunnerFile.py
 
 # PyPI configuration file
 .pypirc
+cred.txt
+local_s3/
+
+models/
+data/
 
 # Marimo
 marimo/_static/
