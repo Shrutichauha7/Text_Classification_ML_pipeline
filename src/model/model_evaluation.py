@@ -8,6 +8,8 @@ import mlflow
 import mlflow.sklearn
 import dagshub
 import os
+from mlflow.tracking import MlflowClient
+import time
 from src.logger import logging
 
 
@@ -131,12 +133,33 @@ def main():
                 for param_name, param_value in params.items():
                     mlflow.log_param(param_name, param_value)
             
+            
             # Log model to MLflow
             mlflow.sklearn.log_model(
                 sk_model=clf,
                 artifact_path="model",
-                registered_model_name="my_model")
-            
+                registered_model_name="my_model"
+            )
+
+            # Wait until the model version is created
+            time.sleep(5)
+
+            client = MlflowClient()
+
+            latest_version = client.get_latest_versions(
+                name="my_model",
+                stages=["None"]
+            )[0]
+
+            client.transition_model_version_stage(
+                name="my_model",
+                version=latest_version.version,
+                stage="Staging",
+                archive_existing_versions=True
+            )
+
+            print(f"Model version {latest_version.version} moved to Staging")
+
             # Save model info
             save_model_info(run.info.run_id, "model", 'reports/experiment_info.json')
             
