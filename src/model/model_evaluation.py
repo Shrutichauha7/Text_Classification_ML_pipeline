@@ -16,26 +16,27 @@ from src.logger import logging
 # Below code block is for production use
 # -------------------------------------------------------------------------------------
 # Set up DagsHub credentials for MLflow tracking
-# dagshub_token = os.getenv("CAPSTONE_TEST")
-# if not dagshub_token:
-#     raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
+dagshub_token = os.getenv("CAPSTONE_TEST")
+if not dagshub_token:
+    raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
 
-# os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
-# os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
-# dagshub_url = "https://dagshub.com"
-# repo_owner = "Shrutichauha7"
-# repo_name = "Text_Classification_ML_pipeline"
+dagshub_url = "https://dagshub.com"
+repo_owner = "Shrutichauha7"
+repo_name = "Text_Classification_ML_pipeline"
 
-# # Set up MLflow tracking URI
-# mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+# Set up MLflow tracking URI
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 # -------------------------------------------------------------------------------------
 
 # Below code block is for local use
 # -------------------------------------------------------------------------------------
-mlflow.set_tracking_uri('https://dagshub.com/Shrutichauha7/Text_Classification_ML_pipeline.mlflow')
-dagshub.init(repo_owner='Shrutichauha7', repo_name='Text_Classification_ML_pipeline', mlflow=True)
+# mlflow.set_tracking_uri('https://dagshub.com/Shrutichauha7/Text_Classification_ML_pipeline.mlflow')
+# dagshub.init(repo_owner='Shrutichauha7', repo_name='Text_Classification_ML_pipeline', mlflow=True)
 # -------------------------------------------------------------------------------------
+
 
 
 def load_model(file_path: str):
@@ -133,33 +134,9 @@ def main():
                 for param_name, param_value in params.items():
                     mlflow.log_param(param_name, param_value)
             
-            
             # Log model to MLflow
-            mlflow.sklearn.log_model(
-                sk_model=clf,
-                artifact_path="model",
-                registered_model_name="my_model"
-            )
-
-            # Wait until the model version is created
-            time.sleep(5)
-
-            client = MlflowClient()
-
-            latest_version = client.get_latest_versions(
-                name="my_model",
-                stages=["None"]
-            )[0]
-
-            client.transition_model_version_stage(
-                name="my_model",
-                version=latest_version.version,
-                stage="Staging",
-                archive_existing_versions=True
-            )
-
-            print(f"Model version {latest_version.version} moved to Staging")
-
+            mlflow.sklearn.log_model(clf, "model")
+            
             # Save model info
             save_model_info(run.info.run_id, "model", 'reports/experiment_info.json')
             
