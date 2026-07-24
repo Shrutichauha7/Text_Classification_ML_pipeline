@@ -48,7 +48,7 @@
 31. Add .github/workflows/ci.yaml file
 
 32. Create key token on Dagshub for auth: Go to dagshub repo > Your settings > Tokens > Generate new token
-    >> Please make sure to save token << >> capstone_test: 9f26bc1b40ebdd022f2f7b1eae4466b93693d9ec<<
+    >> Please make sure to save token << >> capstone_test: 0d084039521b9cb69e9cef767fddce152f55242a<<
     >> Add this auth token to github secret&var and update on ci file
 
 
