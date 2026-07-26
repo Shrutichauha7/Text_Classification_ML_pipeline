@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import mlflow
 import pickle
 import os
+import numpy as np
 import pandas as pd
 from prometheus_client import Counter, Histogram, generate_latest, CollectorRegistry, CONTENT_TYPE_LATEST
 import time
@@ -88,7 +89,7 @@ repo_owner = "Shrutichauha7"
 repo_name = "Text_Classification_ML_pipeline"
 # Set up MLflow tracking URI
 mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
-# -------------------------------------------------------------------------------------
+# # -------------------------------------------------------------------------------------
 
 
 # Initialize Flask app
