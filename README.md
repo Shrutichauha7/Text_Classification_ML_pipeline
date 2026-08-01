@@ -1,312 +1,210 @@
-Production Grade MLOps Pipeline
-End-to-End Text Classification System
-AWS • Docker • Kubernetes • DVC • MLflow • CI/CD • Monitoring
-Beautiful Badges
-![Python](https://img.shields.io/badge/Python-3.10-blue)
+#  End-to-End MLOps Pipeline for Text Classification
 
+> A production-ready MLOps pipeline for Text Classification built with **Python, Scikit-learn, DVC, MLflow, Docker, AWS, Kubernetes, GitHub Actions, Prometheus, and Grafana**.
+
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?logo=scikitlearn)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker)
-
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes)
-
-![AWS](https://img.shields.io/badge/AWS-orange?logo=amazonaws)
-
+![AWS](https://img.shields.io/badge/AWS-FF9900?logo=amazonaws)
 ![MLflow](https://img.shields.io/badge/MLflow-0194E2)
+![DVC](https://img.shields.io/badge/DVC-945DD6)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?logo=grafana)
 
-![DVC](https://img.shields.io/badge/DVC-purple)
+---
 
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF)
+## 📌 Overview
 
-![Prometheus](https://img.shields.io/badge/Prometheus-orange)
+This project demonstrates a complete **Machine Learning Operations (MLOps)** workflow for a Text Classification application. It automates the ML lifecycle—from data ingestion and preprocessing to model training, experiment tracking, versioning, deployment, and monitoring using modern cloud-native technologies.
 
-![Grafana](https://img.shields.io/badge/Grafana-F46800)
+---
 
-![Flask](https://img.shields.io/badge/Flask-black)
+## ✨ Key Features
 
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E)
+- 📥 Automated Data Ingestion & Preprocessing
+- 🧹 Feature Engineering Pipeline
+- 🤖 Model Training & Evaluation
+- 📊 MLflow Experiment Tracking
+- 📦 DVC Data & Pipeline Versioning
+- 🐳 Docker Containerization
+- ☁️ AWS S3, ECR & EKS Integration
+- 🚀 GitHub Actions CI/CD Pipeline
+- ☸️ Kubernetes Deployment
+- 📈 Prometheus & Grafana Monitoring
+- 🌐 Flask REST API Deployment
 
-![License](https://img.shields.io/badge/License-MIT-green)
-Project Overview
-An enterprise-ready end-to-end Machine Learning Operations (MLOps) project for Text Classification that automates the complete ML lifecycle—from data ingestion and preprocessing to model training, experiment tracking, versioning, deployment, monitoring, and continuous delivery using modern DevOps and cloud technologies.
+---
 
-This project demonstrates production-level ML engineering practices including DVC pipelines, MLflow experiment tracking, Docker containerization, AWS ECR/EKS deployment, GitHub Actions CI/CD, and monitoring with Prometheus and Grafana.
-Features
-✅ Automated Data Ingestion
+## 🏗️ Architecture
 
-✅ Data Preprocessing Pipeline
-
-✅ Feature Engineering
-
-✅ Model Training
-
-✅ Model Evaluation
-
-✅ MLflow Experiment Tracking
-
-✅ DVC Data Versioning
-
-✅ DVC Pipeline Automation
-
-✅ Model Registry
-
-✅ Flask REST API
-
-✅ Docker Containerization
-
-✅ GitHub Actions CI/CD
-
-✅ AWS ECR Image Registry
-
-✅ AWS EKS Deployment
-
-✅ Kubernetes Orchestration
-
-✅ Prometheus Monitoring
-
-✅ Grafana Dashboard
-
-✅ Cloud Deployment
-
-✅ Production-ready Architecture
-Tech Stack
-Category	Technologies
-Programming	Python
-ML	Scikit-Learn
-API	Flask
-Experiment Tracking	MLflow + DagsHub
-Data Versioning	DVC
-Cloud	AWS
-Storage	Amazon S3
-Container	Docker
-Registry	Amazon ECR
-Orchestration	Kubernetes (EKS)
-CI/CD	GitHub Actions
-Monitoring	Prometheus
-Visualization	Grafana
-Version Control	Git & GitHub
-Architecture Diagram
-                GitHub Repository
-                       │
-                       ▼
-              GitHub Actions CI
-                       │
-         ┌─────────────┴─────────────┐
-         ▼                           ▼
-      Run Tests               Build Docker Image
-         │                           │
-         └─────────────┬─────────────┘
-                       ▼
-              Push Image to AWS ECR
-                       │
-                       ▼
-                Deploy to AWS EKS
-                       │
-          Kubernetes Cluster
-                       │
-               Flask Application
-                       │
-          ┌────────────┴────────────┐
-          ▼                         ▼
-     Prometheus               MLflow + DVC
-          │
-          ▼
-      Grafana Dashboard
-ML Pipeline
-Raw Dataset
-
-↓
-
+```text
+Dataset
+   │
+   ▼
 Data Ingestion
-
-↓
-
+   │
+   ▼
 Data Preprocessing
-
-↓
-
+   │
+   ▼
 Feature Engineering
-
-↓
-
+   │
+   ▼
 Model Training
-
-↓
-
+   │
+   ▼
 Model Evaluation
+   │
+   ├────────► MLflow (Experiment Tracking)
+   └────────► DVC (Data & Pipeline Versioning)
+                    │
+                    ▼
+               Flask API
+                    │
+                    ▼
+                 Docker
+                    │
+                    ▼
+                Amazon ECR
+                    │
+                    ▼
+             Kubernetes (EKS)
+                    │
+                    ▼
+              Load Balancer
+                    │
+                    ▼
+                 End Users
+                    │
+                    ▼
+         Prometheus → Grafana
+```
 
-↓
+---
 
-Model Registration
+## 🛠️ Tech Stack
 
-↓
+| Category | Technologies |
+|----------|--------------|
+| Programming | Python 3.10 |
+| Machine Learning | Scikit-learn |
+| Backend | Flask |
+| Experiment Tracking | MLflow + DagsHub |
+| Data Versioning | DVC |
+| Cloud | AWS |
+| Storage | Amazon S3 |
+| Containerization | Docker |
+| Container Registry | Amazon ECR |
+| Orchestration | Amazon EKS (Kubernetes) |
+| CI/CD | GitHub Actions |
+| Monitoring | Prometheus & Grafana |
+| Version Control | Git & GitHub |
 
-Deployment
-MLOps Workflow
-Developer
+---
 
-↓
+## ⚙️ Project Workflow
 
-GitHub Push
-
-↓
-
+```text
+GitHub
+   │
+   ▼
 GitHub Actions
-
-↓
-
-Unit Tests
-
-↓
-
+   │
+   ▼
+Run Tests
+   │
+   ▼
 DVC Pipeline
+   │
+   ▼
+MLflow Tracking
+   │
+   ▼
+Build Docker Image
+   │
+   ▼
+Push to Amazon ECR
+   │
+   ▼
+Deploy on Amazon EKS
+   │
+   ▼
+Monitor with Prometheus & Grafana
+```
 
-↓
+---
 
-MLflow Logging
+## 📂 Project Structure
 
-↓
-
-Docker Build
-
-↓
-
-Push Image → AWS ECR
-
-↓
-
-Deploy → AWS EKS
-
-↓
-
-Application Live
-
-↓
-
-Prometheus Monitoring
-
-↓
-
-Grafana Dashboard
-AWS Services Used
-Amazon EC2
-
-Amazon S3
-
-Amazon ECR
-
-Amazon EKS
-
-IAM
-
-Load Balancer
-
-Cloud Networking
-Monitoring Stack
-Application
-
-↓
-
-Prometheus
-
-↓
-
-Grafana
-
-↓
-
-Real-time Dashboards
-
-↓
-
-Performance Metrics
-Project Structure
-.
-├── src
-│   ├── logger
-│   ├── data_ingestion
-│   ├── data_preprocessing
-│   ├── feature_engineering
-│   ├── model_building
-│   ├── model_evaluation
-│   └── register_model
+```text
+├── src/
+│   ├── data_ingestion/
+│   ├── data_preprocessing/
+│   ├── feature_engineering/
+│   ├── model_building/
+│   ├── model_evaluation/
+│   └── register_model/
 │
-├── tests
-├── scripts
-├── flask_app
-├── .github/workflows
+├── flask_app/
+├── tests/
+├── scripts/
+├── .github/workflows/
 ├── dvc.yaml
 ├── params.yaml
 ├── requirements.txt
 └── README.md
-CI/CD Pipeline
-Developer Push
+```
 
-↓
+---
 
-GitHub Actions
+## 🚀 Technologies Demonstrated
 
-↓
+- Machine Learning Pipeline
+- Data Versioning with DVC
+- MLflow Experiment Tracking
+- Model Registry
+- Docker Containerization
+- AWS Cloud Deployment
+- Kubernetes Orchestration
+- CI/CD Automation
+- Infrastructure Monitoring
+- Production-Ready REST API
 
-Install Dependencies
+---
 
-↓
+## 📸 Project Screenshots
 
-Run Tests
+Add screenshots here for:
 
-↓
+- MLflow Dashboard
+- GitHub Actions
+- Docker Image
+- Kubernetes Pods
+- Prometheus
+- Grafana Dashboard
+- Application UI
 
-Run DVC Pipeline
+---
 
-↓
+## 🎯 Future Improvements
 
-Build Docker Image
-
-↓
-
-Push Image to ECR
-
-↓
-
-Deploy to Kubernetes
-
-↓
-
-Application Updated
-Recruiter Highlights
-✔ Production-grade MLOps
-
-✔ Cloud Native Deployment
-
-✔ Kubernetes Orchestration
-
-✔ Dockerized Application
-
-✔ Complete CI/CD Pipeline
-
-✔ Automated ML Workflow
-
-✔ Data Versioning
-
-✔ Experiment Tracking
-
-✔ Monitoring & Alerting
-
-✔ Scalable Deployment
-
-✔ Infrastructure as Code Ready
-Future Improvements
-- Terraform Infrastructure
+- Infrastructure as Code using Terraform
+- GitOps with ArgoCD
 - Helm Charts
-- ArgoCD GitOps
 - Model Drift Detection
-- Airflow Scheduling
-- FastAPI Migration
-- Canary Deployment
-- Blue-Green Deployment
-GitHub Stats Section
-![Stars](https://img.shields.io/github/stars/USERNAME/REPO)
+- Canary & Blue-Green Deployments
 
-![Forks](https://img.shields.io/github/forks/USERNAME/REPO)
+---
 
-![Issues](https://img.shields.io/github/issues/USERNAME/REPO)
+## 👩‍💻 Author
 
-![Last Commit](https://img.shields.io/github/last-commit/USERNAME/REPO)
+**Shruti Chauhan**
+
+- GitHub: https://github.com/Shrutichauha7
+- LinkedIn: https://www.linkedin.com/in/shrutichauhan792004
+
+---
+
+⭐ **If you found this project helpful, consider giving it a star!**
